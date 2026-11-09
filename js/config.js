@@ -16,11 +16,11 @@
  */
 window.DRAPE_CONFIG = {
   firebase: {
-    apiKey: 'PASTE_YOUR_API_KEY',
+    apiKey: 'AIzaSyD3LmimWZxP49sXWW3AG3fL1t6P7Hz1AGs',
     authDomain: 'clothes-try-66e2f.firebaseapp.com',
     databaseURL: 'https://clothes-try-66e2f-default-rtdb.europe-west1.firebasedatabase.app',
     projectId: 'clothes-try-66e2f',
-    appId: 'PASTE_YOUR_APP_ID',
+    appId: '1:160181048952:web:44887cfdd34b16bc9a3f8d',
   },
 
   tryOnSpace: 'yisol/IDM-VTON',
