@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DRAPE – Your Wardrobe. Your Style. Your AI.</title>
+  <meta name="description" content="Your digital wardrobe with AI virtual try-on.">
+  <meta name="theme-color" content="#f8f8f6">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Shown only if the app fails to start. -->
+    <div id="startup" class="loader" style="min-height:80vh;align-content:center">
+      <p>Opening DRAPE…</p>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toasts" aria-live="polite"></div>
+
+  <!-- Firebase (sign-in and database). Loaded from Google. -->
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-database-compat.js"></script>
+
+  <!-- DRAPE. config.js is the only file you need to edit. -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/images.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Remove any offline copy left in this browser by the earlier DRAPE version.
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      navigator.serviceWorker.getRegistrations().then(function (list) {
+        list.forEach(function (r) { r.unregister(); });
+      }).catch(function () {});
+    }
+    // If something stops the app from starting, explain what to do instead of a blank page.
+    setTimeout(function () {
+      var s = document.getElementById('startup');
+      if (!s) return;
+      s.innerHTML =
+        '<p style="font-family:Georgia,serif;font-size:28px;color:#000">DRAPE didn’t start</p>' +
+        '<p style="max-width:46ch">Check your internet connection and reload the page. ' +
+        'If you edited <code>js/config.js</code>, make sure every value is inside quotes and each line ends with a comma. ' +
+        'The README has a “Something’s wrong” section.</p>' +
+        '<button class="btn btn-primary" onclick="location.reload()">Reload</button>';
+    }, 6000);
+  </script>
+</body>
+</html>

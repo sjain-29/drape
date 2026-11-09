@@ -1,0 +1,23 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "images": {
+          "$imageId": {
+            ".validate": "newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 1500000"
+          }
+        },
+        "profile": {
+          "name": { ".validate": "newData.isString() && newData.val().length <= 80" }
+        },
+        "$section": {
+          ".validate": "$section === 'photos' || $section === 'wardrobe' || $section === 'outfits' || $section === 'tryons' || $section === 'settings'"
+        }
+      }
+    }
+  }
+}
